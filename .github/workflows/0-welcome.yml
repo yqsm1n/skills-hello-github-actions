@@ -82,20 +82,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # In README.md, switch step 0 for step 1.
-      - name: Update to step 1
-        uses: skills/action-update-step@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 0
-          to_step: 1
-          branch_name: welcome-workflow
-name: Post welcome comment
-on:
-  pull_request:
-    types: [opened]
-permissions:
-  pull-requests: write
-jobs:
-  build:
-    name: Post welcome comment
-    runs-on: ubuntu-latest
+      - name: Post welcome comment
+        on:
+        pull_request:
+        types: [opened]
+        permissions:
+          pull-requests: write
+          jobs:
+          build:
+        name: Post welcome comment
+        runs-on: ubuntu-latest
